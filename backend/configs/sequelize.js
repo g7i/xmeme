@@ -10,7 +10,5 @@ exports.setupDB = async () => {
     await sequelize.authenticate();
     await sequelize.sync();
 }
-// const sequelize = new Sequelize('sqlite::memory:');
-
 
 exports.sequelize = sequelize;

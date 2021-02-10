@@ -31,7 +31,7 @@ Meme.init({
     },
 }, {
     sequelize,
-    modelName: 'Meme' // We need to choose the model name
+    modelName: 'Meme'
 });
 
 module.exports = Meme;
