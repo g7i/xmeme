@@ -1,0 +1,243 @@
+.hero_container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.hero_container .hero_cover {
+    height: 100vh;
+}
+
+.hero_container .hero_cover .img {
+    width: 90vw;
+    height: auto;
+    margin: auto;
+}
+
+.hero_container .hero_cover img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.hero_container .hero_cover .head_text {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.hero_container .hero_cover .head_text h1{
+    font-weight: bold;
+}
+
+.hero_container .hero_cover .head_text p{
+    font-size: 1.2em;
+}
+
+.hero_container .hero_cover .head_text h1 span{
+    color: #54fce8;
+}
+
+.list_container {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll !important;
+}
+
+.back_arrow {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.wrapper {
+    max-width: 85vw;
+}
+
+.meme {
+    margin: 15px;
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.meme.zoomable {
+    cursor: zoom-in;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+}
+
+.meme.modal {
+    max-height: 80vh;
+}
+
+.meme.modal .img {
+    height: unset;
+    width: unset;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #00000000, #00000040, #00000080, #000000A0, #000000BF, #000000DD);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 5px 5px 10px;
+    color: white;
+    width: 100%;
+}
+
+.meme .actions {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.caption .text {
+    font-size: 1em;
+    line-height: 15px;
+}
+
+.caption .title {
+    font-size: 0.9em;
+    color: #ffe9a7;
+    margin-right: 5px;
+}
+
+.name {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    background-color: #ffffffDD;
+    border-radius: 5px;
+    color: black;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 2px 4px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.scroll_arr img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: contain;
+}
+
+.bounce {
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation: bounce 3.6s ease infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0) translateX(-50%);
+    }
+    5.55556% {
+        transform: translateY(0) translateX(-50%);
+    }
+    11.11111% {
+        transform: translateY(0) translateX(-50%);
+    }
+    22.22222% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+    27.77778% {
+        transform: translateY(0) translateX(-50%);
+    }
+    33.33333% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+    44.44444% {
+        transform: translateY(0) translateX(-50%);
+    }
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .memes__container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .ant-popover{
+        width: 250px;
+    }
+    .scroll_arr {
+        transform: rotate(-90deg);
+    }
+    .scroll_arr img {
+        left: unset;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+    .memes__container {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+    .hero_container {
+        flex-direction: row;
+        width: 200%;
+        height: 100vh;
+    }
+    .hero_container .hero_cover {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .hero_container .hero_cover {
+        max-height: 100vh !important;
+        min-width: 50%;
+        overflow-y: hidden;
+    }
+    .hero_container .hero_cover .img {
+        width: 700px;
+        height: auto;
+        margin: unset;
+    }
+    .hero_container .hero_cover .head_text h1{
+        font-size: 7.2em;
+        margin-bottom: 0;
+    }
+    .hero_container .hero_cover .head_text p{
+        font-size: 2.2em;
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .memes__container {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}

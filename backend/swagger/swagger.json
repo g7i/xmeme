@@ -1,0 +1,281 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "XMeme",
+    "description": "API Endpoints for XMeme."
+  },
+  "host": "localhost:8081",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/memes": {
+      "get": {
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Get the list of latest 100 memes",
+        "operationId": "Meme_GetList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListMemesResponse"
+            }
+          }
+        },
+        "x-Documentantion-DisplayName": "List 100 latest Memes"
+      },
+      "post": {
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Create a meme",
+        "operationId": "Meme_CreateMeme",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Meme"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "CREATED",
+            "schema": {
+              "$ref": "#/definitions/CreateMemeResponse"
+            }
+          },
+          "400": {
+            "description": "Meme validation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "x-Documentantion-DisplayName": "Create Meme"
+      }
+    },
+    "/memes/subscribe": {
+      "get": {
+        "description": "Using SSE to push meme as soon as they are added",
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Get the meme stream",
+        "operationId": "Meme_Subscribe",
+        "produces": [
+          "text/event-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Meme"
+            }
+          }
+        },
+        "x-Documentantion-DisplayName": "Get Meme stream when added"
+      }
+    },
+    "/memes/{id}": {
+      "get": {
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Get the meme with the specified id",
+        "operationId": "Meme_GetMeme",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the meme",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Meme"
+            }
+          },
+          "404": {
+            "description": "Meme not found with the specified Id."
+          }
+        },
+        "x-Documentantion-DisplayName": "Get Meme"
+      },
+      "patch": {
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Update a specified Meme",
+        "operationId": "Meme_UpdateMeme",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the meme to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateMemeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Meme has been updated successfully."
+          },
+          "400": {
+            "description": "Data validation failed."
+          },
+          "404": {
+            "description": "Meme not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "x-Documentantion-DisplayName": "Update Meme"
+      },
+      "delete": {
+        "tags": [
+          "Meme"
+        ],
+        "summary": "Delete a specified Meme (Idempotent Operation)",
+        "operationId": "Meme_DeleteMeme",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the Meme to be deleted.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Specified meme has been removed."
+          }
+        },
+        "x-Documentantion-DisplayName": "Delete transaction"
+      }
+    }
+  },
+  "definitions": {
+    "Meme": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id of the meme",
+          "uniqueItems": true,
+          "readOnly": true,
+          "example": 7
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the meme creator",
+          "example": "Gourav Saini"
+        },
+        "caption": {
+          "type": "string",
+          "description": "caption associated with the meme",
+          "example": "Awesome Meme"
+        },
+        "url": {
+          "type": "string",
+          "description": "Image URL for the meme",
+          "example": "https://content.clipchamp.com/content-repo/content/thumbs/cc_t299a95e.jpg",
+          "uniqueItems": true,
+          "format": "url"
+        }
+      },
+      "description": "Model to represent Meme object",
+      "required": [
+        "name",
+        "caption",
+        "url"
+      ]
+    },
+    "ErrorResponse": {
+      "description": "Error response",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ListMemesResponse": {
+      "description": "List of memes",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Meme"
+      }
+    },
+    "CreateMemeResponse": {
+      "description": "Create Meme Response",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id of the meme",
+          "uniqueItems": true,
+          "readOnly": true,
+          "example": 7
+        }
+      }
+    },
+    "UpdateMemeRequest": {
+      "description": "Update meme request body",
+      "type": "object",
+      "properties": {
+        "caption": {
+          "type": "string",
+          "description": "caption associated with the meme",
+          "example": "Awesome Meme"
+        },
+        "url": {
+          "type": "string",
+          "description": "Image URL for the meme",
+          "example": "https://content.clipchamp.com/content-repo/content/thumbs/cc_t299a95e.jpg",
+          "uniqueItems": true,
+          "format": "url"
+        }
+      }
+    }
+  }
+}
