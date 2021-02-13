@@ -1,20 +1,8 @@
 import MemesList from "./MemesList";
 import {useEffect, useRef} from "react";
-import ResetScroll from "../utils/ResetScroll";
+import {handleScrollEvents, ResetScroll} from "../utils/HandleScroll";
 
-const handleScrollEvents = (e): void => {
-    // @ts-ignore
-    if (window.innerWidth <= 768) {
-        window.scrollTo({top: window.innerHeight});
-        document.body.classList.add("list");
-    } else {
-        if ((e.deltaY > 0 || e.deltaX > 0) && window.scrollX === 0) {
-            window.scrollTo({left: window.innerWidth});
-            document.body.classList.add("list");
-        }
-    }
-}
-
+// Entry container
 export default function Hero(): JSX.Element {
     const heroRef = useRef<HTMLDivElement>(null);
 

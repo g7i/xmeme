@@ -1,6 +1,10 @@
 const {DataTypes, Model} = require('sequelize');
 const {sequelize} = require('../configs/sequelize');
 
+/**
+ * Model definition for Meme
+ */
+
 class Meme extends Model {}
 
 Meme.init({

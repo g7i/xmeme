@@ -7,6 +7,7 @@ import {MemeContextState} from "../constants/ContextTypes";
 import {MemesContext} from "../contexts/MemeContext";
 import ActionTypes from "../constants/ActionTypes";
 
+// Material-UI styles
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         modal: {
@@ -23,11 +24,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
+// Modal to enlarge meme
 const MemeModal = (): JSX.Element => {
     const {currentMeme: meme, modalState, dispatch} = useContext<MemeContextState>(MemesContext);
-    const classes = useStyles();
+    const classes: Record<"modal" | "paper", string> = useStyles();
 
-    const handleClose = () => {
+    const handleClose = (): void => {
         dispatch({
             type: ActionTypes.SET_MODAL_STATE,
             payload: false,

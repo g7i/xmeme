@@ -8,8 +8,8 @@ import ActionTypes from "../constants/ActionTypes";
 import RandomString from "../utils/RandomString";
 import {APIEndpoint} from "../configs/Configs";
 
-
-export default function AddDrawer() {
+// Drawer for adding meme
+export default function AddDrawer(): JSX.Element {
 
     const {dispatch, addMemeState} = useContext<MemeContextState>(MemesContext);
     const formRef = useRef<FormInstance>(null);

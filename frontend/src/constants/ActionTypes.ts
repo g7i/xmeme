@@ -1,3 +1,4 @@
+// Action types for dispatching
 enum ActionTypes {
     SET_MEMES = "SET_MEMES",
     SET_CURRENT_MEME = "SET_CURRENT_MEME",

@@ -7,7 +7,7 @@ import ActionTypes from "../constants/ActionTypes";
 import {Meme} from "../constants/Meme";
 import {APIEndpoint} from "../configs/Configs";
 
-
+// Drawer for editing meme
 export default function EditDrawer({meme}: { meme: Meme }): JSX.Element {
 
     const {dispatch} = useContext<MemeContextState>(MemesContext);

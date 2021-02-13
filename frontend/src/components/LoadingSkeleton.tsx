@@ -1,7 +1,8 @@
 import {Col, Row, Skeleton} from "antd";
 import React from "react";
 
-export default function LoadingSkeleton() {
+// Skeleton loading screen
+export default function LoadingSkeleton(): JSX.Element {
     return (
         <div style={{padding: "100px"}}>
             <Row gutter={16}>

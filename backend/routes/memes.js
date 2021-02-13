@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {createMeme, listMemes, retrieveMeme, deleteMeme, updateMeme, subscribe} = require('../controllers/memes');
 
+/**
+ * Routes for /meme endpoints
+ */
+
 router.post('/', createMeme);
 router.get('/', listMemes);
 

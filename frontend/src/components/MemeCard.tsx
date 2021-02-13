@@ -9,6 +9,7 @@ import axios from "axios";
 import EditDrawer from "./EditDrawer";
 import {APIEndpoint} from "../configs/Configs";
 
+// Card to display a meme
 export default function MemeCard({meme}: { meme: Meme }): JSX.Element {
     const {dispatch} = useContext<MemeContextState>(MemesContext);
 

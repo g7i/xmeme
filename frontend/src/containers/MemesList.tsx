@@ -10,11 +10,11 @@ import MemeCard from "../components/MemeCard";
 import LoadingSkeleton from "../components/LoadingSkeleton";
 import {Alert, Button} from "antd";
 import {ArrowLeftOutlined} from "@ant-design/icons";
-import ResetScroll from "../utils/ResetScroll";
 import {Snackbar} from "@material-ui/core";
 
 import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
 import {APIEndpoint} from "../configs/Configs";
+import {ResetScroll} from "../utils/HandleScroll";
 
 function MUAlert(props: AlertProps) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
