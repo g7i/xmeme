@@ -6,6 +6,7 @@ import {MemesContext} from "../contexts/MemeContext";
 import ActionTypes from "../constants/ActionTypes";
 import {Meme} from "../constants/Meme";
 import {APIEndpoint} from "../configs/Configs";
+import {EditOutlined} from "@ant-design/icons";
 
 // Drawer for editing meme
 export default function EditDrawer({meme}: { meme: Meme }): JSX.Element {
@@ -39,10 +40,12 @@ export default function EditDrawer({meme}: { meme: Meme }): JSX.Element {
 
     return (
         <React.Fragment>
-            <Button onClick={() => setIsDrawerOpen(true)}>Edit</Button>
+            <a onClick={() => setIsDrawerOpen(true)}>
+                <EditOutlined /> Edit
+            </a>
             <Drawer
                 title="Update a meme"
-                width={540}
+                width={window.innerWidth < 768 ? 300 : 540}
                 onClose={() => setIsDrawerOpen(false)}
                 visible={isDrawerOpen}
                 bodyStyle={{paddingBottom: 80}}

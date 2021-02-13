@@ -5,8 +5,9 @@
     "title": "XMeme",
     "description": "API Endpoints for XMeme."
   },
-  "host": "localhost:8081",
+  "host": "xmeme-back.herokuapp.com",
   "schemes": [
+    "https",
     "http"
   ],
   "paths": {

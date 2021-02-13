@@ -15,6 +15,7 @@ const sequelize = new Sequelize({
  */
 exports.setupDB = async () => {
     await sequelize.authenticate();
+    // await sequelize.sync();
     await sequelize.sync({force: true});
 }
 

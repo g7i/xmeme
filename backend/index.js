@@ -22,13 +22,18 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50
 
 // Setting up cors middleware
 const corsOptions = {
-    origin: ['http://localhost:3000','http://localhost:8080',],
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:8080',
+        'http://192.168.43.69:3000',
+        'https://xmeme-front.netlify.app',
+    ],
     optionsSuccessStatus: 200,
 }
 app.use(cors(corsOptions))
 
 // Routes
-app.use('/', router);
+app.use('/', router, swagger);
 swaggerApp.use('/', swagger);
 
 // Setting up the db
@@ -43,9 +48,3 @@ function initiate() {
 
 // serve Swagger-UI
 swaggerApp.listen(8080, () => console.log(`Swagger UI running on port 8080`))
-
-
-
-
-
-// Readme validate, urls change, gif

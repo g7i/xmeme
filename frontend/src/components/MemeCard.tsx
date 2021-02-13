@@ -3,11 +3,14 @@ import React, {useContext} from "react";
 import ActionTypes from "../constants/ActionTypes";
 import {MemeContextState} from "../constants/ContextTypes";
 import {MemesContext} from "../contexts/MemeContext";
-import {Button, message, Popconfirm, Popover} from "antd";
+import {Button, Dropdown, Menu, message, Popconfirm} from "antd";
 import {MoreOutlined} from "@ant-design/icons";
 import axios from "axios";
 import EditDrawer from "./EditDrawer";
 import {APIEndpoint} from "../configs/Configs";
+import {DeleteOutlined, SendOutlined, WhatsAppOutlined, FacebookOutlined, InstagramOutlined} from "@ant-design/icons";
+
+const {SubMenu} = Menu;
 
 // Card to display a meme
 export default function MemeCard({meme}: { meme: Meme }): JSX.Element {
@@ -37,19 +40,46 @@ export default function MemeCard({meme}: { meme: Meme }): JSX.Element {
         }
     }
 
-    const content: JSX.Element = (
-        <div onClick={e => e.stopPropagation()} style={{display: "flex", justifyContent: "space-around"}}>
-            <EditDrawer meme={meme}/>
-            <Popconfirm
-                title="Are you sure to delete this meme?"
-                onConfirm={handleDelete}
-                okText="Yes"
-                cancelText="No"
-                className={"confirm"}
-            >
-                <Button>Delete</Button>
-            </Popconfirm>
-        </div>
+    const menu = (
+        <Menu>
+            <Menu.Item>
+                <EditDrawer meme={meme}/>
+            </Menu.Item>
+            <Menu.Item>
+                <Popconfirm
+                    title="Are you sure to delete this meme?"
+                    onConfirm={handleDelete}
+                    okText="Yes"
+                    cancelText="No"
+                    className={"confirm"}
+                    placement="leftBottom"
+                >
+                    <DeleteOutlined /> Delete
+                </Popconfirm>
+            </Menu.Item>
+            <SubMenu title={<div><SendOutlined /> Share</div>}>
+                <Menu.Item>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={"Share WA"}
+                        href={`whatsapp://send?text=${meme.url}`}
+                    >
+                        <WhatsAppOutlined /> WhatsApp
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={"Share FB"}
+                        href={`https://www.facebook.com/sharer.php?u=${meme.url}`}
+                    >
+                        <FacebookOutlined /> Facebook
+                    </a>
+                </Menu.Item>
+            </SubMenu>
+        </Menu>
     );
 
     return (
@@ -70,9 +100,9 @@ export default function MemeCard({meme}: { meme: Meme }): JSX.Element {
                 <div className="text">{meme.name}</div>
             </div>
             <div className="actions">
-                <Popover content={content}>
+                <Dropdown overlay={menu} placement="bottomRight">
                     <Button icon={<MoreOutlined/>}/>
-                </Popover>
+                </Dropdown>
             </div>
         </div>
     );
