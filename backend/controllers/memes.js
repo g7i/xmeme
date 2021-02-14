@@ -128,9 +128,13 @@ exports.subscribe = (req, res) => {
     const headers = {
         'Content-Type': 'text/event-stream',
         'Connection': 'keep-alive',
-        'Cache-Control': 'no-cache'
+        'Cache-Control': 'no-cache',
+        "access-control-allow-origin": req.headers.origin,
     };
     res.writeHead(200, headers);
+
+    // TO send headers right away
+    res.write(`data: ${JSON.stringify({})}\n\n`)
 
     // New client Object
     const clientId = Date.now();

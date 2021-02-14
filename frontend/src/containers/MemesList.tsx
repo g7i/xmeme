@@ -44,10 +44,11 @@ function MemesList(): JSX.Element {
         const events = new EventSource(`${APIEndpoint}/memes/subscribe`);
         events.onmessage = (event) => {
             const meme = JSON.parse(event.data);
-            dispatch({
-                type: ActionTypes.APPEND_NEW_MEME,
-                payload: meme,
-            });
+            if (Object.keys(meme).length)
+                dispatch({
+                    type: ActionTypes.APPEND_NEW_MEME,
+                    payload: meme,
+                });
         };
     }, []);
 
