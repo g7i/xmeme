@@ -10,7 +10,8 @@ export default function Hero(): JSX.Element {
         window.onmousewheel = handleScrollEvents;
         window.ontouchmove = handleScrollEvents;
         window.onresize = ResetScroll;
-        if (window.screenLeft > 0) {
+        console.log(window.screenLeft)
+        if (window.screenLeft > window.innerWidth - 60) {
             document.body.classList.add("list");
         }
     }, [])
