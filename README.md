@@ -1,8 +1,8 @@
-#<font color="teal">XMeme</font>
+# <span style="color:teal">XMeme</span>
 
 This project is a developed for CWoD. For more details visit ***[`https://crio.do`](https://crio.do)***<br>
 
-####View this project live on <br>
+#### View this project live on <br>
 Frontend ***[https://xmeme-front.netlify.app](https://xmeme-front.netlify.app)*** <br>
 Backend ***[https://xmeme-back.herokuapp.com](https://xmeme-back.herokuapp.com)***<br>
 Swagger-UI ***[https://xmeme-back.herokuapp.com/swagger-ui](https://xmeme-back.herokuapp.com/swagger-ui)***<br>
@@ -20,16 +20,16 @@ Swagger-UI ***[https://xmeme-back.herokuapp.com/swagger-ui](https://xmeme-back.h
 <br>
 ----
 
-## <font color="teal">How to use this project</font>
+## <span style="color:teal">How to use this project</span>
 Clone this repository and open the terminal from root project directory.
 Follow the steps mentioned below according to your need.
 
-##### <font color="teal">Run the frontend</font>
+##### <span style="color:teal">Run the frontend</span>
 * Run `cd frontend` to get into the client application.
 * Run *`npm i`* to install all the dependencies.
 * Now run `npm start`. It'll start the server on [http://localhost:3000](http://localhost:3000).
 
-##### <font color="teal">Run the backend</font>
+##### <span style="color:teal">Run the backend</span>
 * Run `cd backend` to get into the server application.
 * Run *`npm i`* to install all the dependencies.
 * Now run `npm start`. It'll start the API server on [http://localhost:8081](http://localhost:8081) and Swagger-UI at [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui).
