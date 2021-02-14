@@ -2,7 +2,11 @@
 
 This project is a developed for CWoD. For more details visit ***[`https://crio.do`](https://crio.do)***<br>
 
-View this project live on ***[`https://xmeme-front.netlify.app`](https://xmeme-front.netlify.app)***<br>
+####View this project live on <br>
+Frontend ***[https://xmeme-front.netlify.app](https://xmeme-front.netlify.app)*** <br>
+Backend ***[https://xmeme-back.herokuapp.com](https://xmeme-back.herokuapp.com)***<br>
+Swagger-UI ***[https://xmeme-back.herokuapp.com/swagger-ui](https://xmeme-back.herokuapp.com/swagger-ui)***<br>
+
 ##### It can be used to :
     1. View Memes.
     2. Add a Meme.
