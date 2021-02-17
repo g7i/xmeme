@@ -6,7 +6,7 @@ export function handleScrollEvents(e: Event): void {
         document.body.classList.add("list");
     } else {
         // @ts-ignore
-        if ((e.deltaY > 0 || e.deltaX > 0) && window.scrollX === 0) {
+        if (((e.detail? e.detail*(120) > 0 : (e.deltaY > 0 || e.deltaX > 0)) && window.scrollX === 0) && window.scrollX === 0) {
             window.scrollTo({left: window.innerWidth});
             document.body.classList.add("list");
         }

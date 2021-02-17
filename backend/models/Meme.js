@@ -5,7 +5,8 @@ const {sequelize} = require('../configs/sequelize');
  * Model definition for Meme
  */
 
-class Meme extends Model {}
+class Meme extends Model {
+}
 
 Meme.init({
     id: {
@@ -13,7 +14,10 @@ Meme.init({
         allowNull: false,
         primaryKey: true,
         unique: true,
-        autoIncrement: true
+        autoIncrement: true,
+        get() {
+            return this.getDataValue('id').toString();
+        },
     },
     name: {
         type: DataTypes.STRING,

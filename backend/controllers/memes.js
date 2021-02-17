@@ -32,7 +32,7 @@ exports.createMeme = async (req, res) => {
 
 /**
  * List all the memes the db
- * @param {Request} req - The request object
+ * @param {Request} _ - The request object
  * @param {Response} res - The response object
  * @return {Promise<void>}
  */

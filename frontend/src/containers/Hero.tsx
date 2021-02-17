@@ -7,9 +7,14 @@ export default function Hero(): JSX.Element {
     const heroRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        window.onmousewheel = handleScrollEvents;
         window.ontouchmove = handleScrollEvents;
         window.onresize = ResetScroll;
+        // @ts-ignore
+        if (typeof InstallTrigger !== 'undefined')
+            document.addEventListener('DOMMouseScroll', handleScrollEvents, false);
+        else
+            window.onmousewheel = handleScrollEvents;
+
         if (window.screenLeft > window.innerWidth - 60) {
             document.body.classList.add("list");
         }

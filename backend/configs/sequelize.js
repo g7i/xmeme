@@ -5,7 +5,7 @@
 const {Sequelize} = require('sequelize');
 
 const sequelize = new Sequelize({
-    logging: false,
+    // logging: false,
     dialect: 'sqlite',
     storage: 'database.sqlite'
 });
